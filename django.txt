@@ -1,0 +1,80 @@
+password:::::::::::::::::::::::
+migrate :html database apply
+name:jems
+psw:jemmy
+byps:jems1947
+
+
+demo1-simple
+demo2-aap1 added
+demo3-app1 added
+demo4-mult app added
+demo5-calci. and external site added
+demo6-external site added
+
+for provide data to back end
+get --not secure
+
+ post method
+
+new django project:
+ 	- django-admin startproject <project name>
+        - python manage.py migrate
+        - python manage.py createsuperuser
+        - settings.py Install_Apps=>python manage.py startapp app1
+       	- python manage.py runserver
+       		
+1)---Demo-urls.py
+from django.contrib import admin
+from django.urls import path
+from django.urls.conf import include
+
+urlpatterns = [
+   	 	path('admin/', admin.site.urls),
+    		path('app1/', include('app1.urls')),
+]
+2)------settigs.py
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'app1'
+]
+
+3)
+create urls.py in app1 folder and add data:
+from django.urls import path
+from app1.views import NewData
+urlpatterns = [
+    path('Data/',NewData),
+   ]
+
+4) view.py define methode
+def NewData(request):
+    return  HttpResponse('<h1>hello world..!</h1>')
+
+
+ ============add external project =======
+ step1:
+ add all 3-4 folder excluding html-file in demo=>app1=>static=>here add
+
+ add html file in demo=>app1=>templates=>add here
+
+ step 2:app1/urls.py:
+ from app1.views import Index       <<===(Index-method name )
+urlpatterns = [
+  path('',Index),                   <<<===add 
+   ]
+    
+step 3:view.py:
+def Index(request):
+    return render(request,'index.html')          <<<==index.html main file
+
+step 4:index.html
+{% load static %}        <<==1st line of index.html file
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">   in link href add=={% static 'link'%}

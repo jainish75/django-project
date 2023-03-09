@@ -1,0 +1,13 @@
+<h1>Templates Html file Working.....hello.html </h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="val1" pattern="[0-9]*" title="enter 5 number only" value="{{a1}}">
+    <!-- double or {} use -->
+    <input type="text" name="val2" pattern="[0-9]*" title="enter 5 number only" value="{{a2}}">
+    <input type="submit" name="submit" value=" + ">
+    <input type="submit" name="submit" value=" - ">
+    <input type="submit" name="submit" value=" * ">
+    <input type="submit" name="submit" value=" ÷ ">
+
+</form>
+<h2>Answer:  {{ans}}</h2>
